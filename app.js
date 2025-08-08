@@ -41,34 +41,101 @@ function filtrorPorEspecialidad(especialidad) {
 function plantilla(specialty, path, users) {
     const userList = users.map(user => `
         <li>
-            <p>id: ${user.id}</p>
-            <p>name: ${user.name}</p>
-            <p>age: ${user.age}</p>
+        <p><strong>Id:</strong> ${user.id}</p>
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Age:</strong> ${user.age}</p>
         </li>`).join('');
         const numeroDeUsuarios = users.length;
         
     return `
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${specialty}</title>
-    </head>
-    <h1>ESPECIALIDAD</H1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${specialty}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #eef2f3, #cfd9df);
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            text-align: center;
+            font-weight: normal;
+            color: #34495e;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            text-align: center;
+            margin: 0.4rem 0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 500px;
+            margin: 1rem auto;
+        }
+        ul li {
+            background: white;
+            margin: 0.5rem 0;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+        ul li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 0.8rem;
+        }
+        nav a {
+            text-decoration: none;
+            background: #3498db;
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        nav a:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <h1>ESPECIALIDAD</h1>
     <h2>${specialty}</h2>
     <p>Current Path: ${path}</p>
-    <p>Numero de usuarios: ${numeroDeUsuarios}</p>
+    <p>Número de usuarios: ${numeroDeUsuarios}</p>
     <ul>${userList}</ul>
     <nav>
-    <a href="/qas">QAs</a>  
-    <a href="/developers">DEVELOPERS</a>
-    <a href="/marketing>MARKETING</a>
-    <a href="/ventas">VENTAS</a>
-    <a href="/ciberseguridad">CIBERSEGURIDAD</a>
-    <a href="/datascience">DATA SCIENCE</a>
-    <a href="/ux">UX</a>
-    </nav>`;
+        <a href="/qas">QAs</a>  
+        <a href="/developers">DEVELOPERS</a>
+        <a href="/marketing">MARKETING</a>
+        <a href="/ventas">VENTAS</a>
+        <a href="/ciberseguridad">CIBERSEGURIDAD</a>
+        <a href="/datascience">DATA SCIENCE</a>
+        <a href="/ux">UX</a>
+    </nav>
+</body>
+</html>
+`;
+
   }
 
     app.get('/', (req, res) => {
